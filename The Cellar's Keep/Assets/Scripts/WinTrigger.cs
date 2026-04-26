@@ -1,5 +1,4 @@
-using UnityEngine;
-using TMPro;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
@@ -22,19 +21,19 @@ public class WinTrigger : MonoBehaviour
 
             if (player != null)
                 player.SetActive(false);
+
+            // unlock cursor so you can click buttons
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
-
-    void Update()
+    public void RestartGame()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
